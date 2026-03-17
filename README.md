@@ -4,7 +4,13 @@ This repository is a reusable dashboard template built with React, TypeScript, a
 
 Built by Youssef Dhibi ([dhibi.tn](https://dhibi.tn)).
 
-![Dashboard Template Preview](./preview.png)
+## Preview
+
+Desktop:
+![Dashboard Template Desktop Preview](./preview.png)
+
+Mobile:
+![Dashboard Template Mobile Preview](./mobile-preview.png)
 
 Live preview: [dashboard-template-react-vite.youssef.tn](https://dashboard-template-react-vite.youssef.tn)
 
