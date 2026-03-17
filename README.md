@@ -10,7 +10,7 @@ Desktop:
 ![Dashboard Template Desktop Preview](./preview.png)
 
 Mobile:
-![Dashboard Template Mobile Preview](./mobile-preview.png)
+<img src="./mobile-preview.png" alt="Dashboard Template Mobile Preview" width="220" />
 
 Live preview: [dashboard-template-react-vite.youssef.tn](https://dashboard-template-react-vite.youssef.tn)
 
