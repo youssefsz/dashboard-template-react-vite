@@ -169,8 +169,8 @@ function MobileHeader({
 
 function MobileBottomNavigation() {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 px-2 pb-[calc(env(safe-area-inset-bottom)+0.35rem)] pt-2 md:hidden">
-      <div className="grid grid-cols-3 gap-1 rounded-2xl border border-white/15 bg-background/70 p-1.5 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/55 dark:border-white/10">
+    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-border/40 bg-background/70 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/55 md:hidden">
+      <div className="mx-auto grid max-w-6xl grid-cols-3 gap-1 px-2 py-2">
         {navigation.map((item) => (
           <NavLink
             key={item.href}
