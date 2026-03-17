@@ -1,48 +1,60 @@
 # Dashboard Template
 
-This repository is a reusable dashboard template built with React, TypeScript, and Vite. It keeps the app shell, login experience, protected routes, and responsive navigation, while replacing product-specific screens with neutral placeholders.
+An open source dashboard template built for React projects that need a clean application shell, responsive navigation, protected routes, and realistic starter pages without rebuilding the foundation from scratch.
 
 Built by Youssef Dhibi ([dhibi.tn](https://dhibi.tn)).
 
-## Preview
-
-Desktop:
-![Dashboard Template Desktop Preview](./preview.png)
-
-Mobile:
-<img src="./mobile-preview.png" alt="Dashboard Template Mobile Preview" width="220" />
-
 Live preview: [dashboard-template-react-vite.youssef.tn](https://dashboard-template-react-vite.youssef.tn)
 
-## What Stays
+## Preview
 
-- Responsive dashboard shell
-- Login page and auth guard flow
-- Simulated Google sign-in and sign-out
+Desktop
+
+![Dashboard Template Desktop Preview](./preview.png)
+
+Mobile
+
+<img src="./mobile-preview.png" alt="Dashboard Template Mobile Preview" width="220" />
+
+## Features
+
+- Responsive application shell for desktop and mobile
+- Simulated Google sign-in flow for template demos
+- Protected routes with session-based redirect behavior
+- Dashboard, Products, and Settings starter pages
 - Feature-based folder structure
-- Shared UI primitives and form components
-- React Router app structure
-- TanStack Query provider setup
+- Reusable shadcn/ui components
+- TanStack Query provider setup for future data features
 
-## Template Routes
+## Tech Stack
 
-| Route | Purpose |
+- React
+- TypeScript
+- Vite
+- Bun
+- Tailwind CSS v4
+- shadcn/ui
+- React Router
+- TanStack Query
+
+## Included Pages
+
+| Route | Description |
 | --- | --- |
-| `/login` | Simulated Google login |
-| `/` | Dashboard placeholder |
-| `/products` | Products placeholder |
-| `/settings` | Settings placeholder |
+| `/login` | Simulated sign-in screen |
+| `/` | Dashboard starter page |
+| `/products` | Products starter page |
+| `/settings` | Settings starter page |
 
-## Authentication Behavior
+## Authentication
 
-The current template uses a simulated Google sign-in flow:
+This template ships with a simulated Google sign-in flow so the authentication experience works out of the box during development.
 
-- The login screen keeps the Google-style entry point.
-- Clicking the button creates a local session in `localStorage`.
-- Protected routes still redirect unauthenticated users to `/login`.
-- Signing out clears the local session and returns to the login page.
+- Signing in creates a local session in `localStorage`
+- Protected routes redirect unauthenticated users to `/login`
+- Signing out clears the session and returns to the login page
 
-The previous real Google button/backend flow is intentionally kept as commented code in the auth feature so it can be restored later.
+The current setup is useful for demos, starter projects, and UI work before wiring a real backend.
 
 ## Project Structure
 
@@ -79,21 +91,27 @@ src/
     └── globals.css
 ```
 
-## Development
+## Getting Started
 
 1. Install dependencies.
 
-   ```bash
-   bun install
-   ```
+```bash
+bun install
+```
 
-2. Start the dev server.
+2. Start the development server.
 
-   ```bash
-   bun run dev
-   ```
+```bash
+bun run dev
+```
 
-3. Open the URL printed by Vite.
+3. Run checks.
+
+```bash
+bun run typecheck
+bun run lint
+bun run build
+```
 
 ## Environment
 
@@ -101,12 +119,12 @@ src/
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | No | Base URL for future API integration. Defaults to `http://localhost:3000/api`. |
 
-## Next Template Customizations
+## Customization Notes
 
-- Replace the placeholder pages with real feature content.
-- Swap the simulated auth flow back to a real Google/backend integration when needed.
-- Add TanStack Query hooks per feature as data fetching is introduced.
+- Replace the starter page content with project-specific features
+- Swap the simulated auth flow for a real backend integration when needed
+- Extend each feature folder with hooks, services, and types as the project grows
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](/Users/youssefsz/WebSites/dashboard-template-react-vite/LICENSE).
+Licensed under the MIT License. See [LICENSE](/Users/youssefsz/WebSites/dashboard-template-react-vite/LICENSE).
