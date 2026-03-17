@@ -6,7 +6,7 @@ Built by Youssef Dhibi ([dhibi.tn](https://dhibi.tn)).
 
 ![Dashboard Template Preview](./preview.png)
 
-Live preview: [dashboard-template-react-vite.vercel.app](https://dashboard-template-react-vite.vercel.app/)
+Live preview: [dashboard-template-react-vite.youssef.tn](https://dashboard-template-react-vite.youssef.tn)
 
 ## What Stays
 
