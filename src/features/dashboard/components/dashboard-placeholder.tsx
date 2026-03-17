@@ -106,7 +106,7 @@ export function DashboardPlaceholder() {
       <SummaryBand />
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.85fr)]">
-        <section className="rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
+        <section className="min-w-0 rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
           <div className="flex flex-col gap-2 border-b border-border/60 pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="text-lg font-semibold tracking-tight text-foreground">Commercial trend</h2>
@@ -118,7 +118,7 @@ export function DashboardPlaceholder() {
           </div>
 
           <div className="pt-6">
-            <ChartContainer config={trendConfig} className="h-[290px] w-full">
+            <ChartContainer config={trendConfig} className="aspect-auto h-[290px] w-full max-w-full overflow-hidden">
               <AreaChart data={trendData} margin={{ left: 8, right: 8, top: 8 }}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -150,7 +150,7 @@ export function DashboardPlaceholder() {
           </div>
         </section>
 
-        <section className="rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
+        <section className="min-w-0 overflow-hidden rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
           <div className="border-b border-border/60 pb-5">
             <h2 className="text-lg font-semibold tracking-tight text-foreground">Acquisition mix</h2>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -159,7 +159,7 @@ export function DashboardPlaceholder() {
           </div>
 
           <div className="pt-6">
-            <ChartContainer config={channelConfig} className="h-[220px] w-full">
+            <ChartContainer config={channelConfig} className="aspect-auto h-[220px] w-full max-w-full overflow-hidden">
               <BarChart data={channelData} margin={{ left: 4, right: 4, top: 4 }}>
                 <CartesianGrid vertical={false} />
                 <XAxis
@@ -167,6 +167,8 @@ export function DashboardPlaceholder() {
                   tickLine={false}
                   axisLine={false}
                   tickMargin={10}
+                  minTickGap={24}
+                  tick={{ fontSize: 11 }}
                 />
                 <ChartTooltip content={<ChartTooltipContent hideLabel />} />
                 <Bar dataKey="share" fill="var(--color-share)" radius={10} />
