@@ -4,6 +4,10 @@ This repository is a reusable dashboard template built with React, TypeScript, a
 
 Built by Youssef Dhibi ([dhibi.tn](https://dhibi.tn)).
 
+![Dashboard Template Preview](./preview.png)
+
+Live preview: [dashboard-template-react-vite.vercel.app](https://dashboard-template-react-vite.vercel.app/)
+
 ## What Stays
 
 - Responsive dashboard shell
