@@ -2,6 +2,8 @@
 
 This repository is a reusable dashboard template built with React, TypeScript, and Vite. It keeps the app shell, login experience, protected routes, and responsive navigation, while replacing product-specific screens with neutral placeholders.
 
+Built by Youssef Dhibi ([dhibi.tn](https://dhibi.tn)).
+
 ## What Stays
 
 - Responsive dashboard shell
@@ -94,3 +96,7 @@ src/
 - Replace the placeholder pages with real feature content.
 - Swap the simulated auth flow back to a real Google/backend integration when needed.
 - Add TanStack Query hooks per feature as data fetching is introduced.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](/Users/youssefsz/WebSites/dashboard-template-react-vite/LICENSE).
