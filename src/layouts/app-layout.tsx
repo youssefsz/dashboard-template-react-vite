@@ -10,6 +10,7 @@ import {
 import { useSession } from "@/features/auth/hooks/use-session"
 import { useRequireAuth } from "@/features/auth/hooks/use-require-auth"
 import { SignOutDialog } from "@/features/auth/components/sign-out-dialog"
+import { AppLogo } from "@/components/common/app-logo"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -88,11 +89,8 @@ function DesktopSidebar({
   return (
     <aside className="hidden w-64 flex-col border-r bg-muted/20 md:flex">
       <div className="flex h-14 items-center border-b px-6">
-        <Link to="/" className="inline-flex items-center gap-3 transition-transform hover:scale-105 active:scale-95">
-          <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary text-xs font-semibold text-primary-foreground">
-            DT
-          </span>
-          <span className="text-sm font-semibold tracking-tight text-foreground">Dashboard Template</span>
+        <Link to="/" className="transition-transform hover:scale-105 active:scale-95">
+          <AppLogo className="h-8 text-foreground" />
         </Link>
       </div>
 
@@ -134,11 +132,8 @@ function MobileHeader({
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-3 border-b border-border/40 bg-background/70 px-4 backdrop-blur-xl supports-[backdrop-filter]:bg-background/55 md:hidden">
       <div className="min-w-0">
-        <Link to="/" className="inline-flex items-center gap-2 transition-transform hover:scale-105 active:scale-95">
-          <span className="flex h-8 w-8 items-center justify-center rounded-2xl bg-primary text-[10px] font-semibold text-primary-foreground">
-            DT
-          </span>
-          <span className="truncate text-sm font-semibold tracking-tight text-foreground">Dashboard Template</span>
+        <Link to="/" className="transition-transform hover:scale-105 active:scale-95">
+          <AppLogo compact className="h-8 text-foreground" />
         </Link>
       </div>
 

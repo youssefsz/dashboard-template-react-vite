@@ -1,14 +1,12 @@
 import { Link, Outlet } from "react-router-dom"
+import { AppLogo } from "@/components/common/app-logo"
 
 export function AuthLayout() {
   return (
     <div className="flex min-h-screen w-full bg-background flex-col lg:flex-row">
       <div className="lg:hidden flex items-center justify-center p-6 border-b border-border bg-background">
-        <Link to="/" className="inline-flex items-center gap-3 transition-transform hover:scale-105 active:scale-95">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-sm font-semibold text-primary-foreground">
-            DT
-          </span>
-          <span className="text-base font-semibold tracking-tight text-foreground">Dashboard Template</span>
+        <Link to="/" className="transition-transform hover:scale-105 active:scale-95">
+          <AppLogo className="h-9 text-foreground" />
         </Link>
       </div>
 
@@ -17,11 +15,8 @@ export function AuthLayout() {
         <div className="absolute -top-[500px] -right-[500px] w-[1000px] h-[1000px] rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
 
         <div className="absolute top-12 left-12 z-10 flex items-center gap-3">
-          <Link to="/" className="inline-flex items-center gap-3 transition-transform hover:scale-105 active:scale-95">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-zinc-950">
-              DT
-            </span>
-            <span className="text-lg font-semibold tracking-tight text-white">Dashboard Template</span>
+          <Link to="/" className="transition-transform hover:scale-105 active:scale-95">
+            <AppLogo className="h-10 text-white" />
           </Link>
         </div>
 
