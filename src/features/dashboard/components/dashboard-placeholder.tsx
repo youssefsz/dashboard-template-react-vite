@@ -4,6 +4,14 @@ import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
@@ -56,45 +64,15 @@ const channelConfig = {
   share: { label: "Share", color: "var(--color-chart-1)" },
 } satisfies ChartConfig
 
-function SummaryBand() {
-  return (
-    <section className="overflow-hidden rounded-[28px] border border-border/60 bg-background/80">
-      <div className="grid divide-y divide-border/60 md:grid-cols-4 md:divide-y-0 md:divide-x">
-        {summary.map((item) => (
-          <div key={item.label} className="space-y-3 px-5 py-5 sm:px-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              {item.label}
-            </p>
-            <div className="flex items-end justify-between gap-3">
-              <p className="text-2xl font-semibold tracking-tight text-foreground">{item.value}</p>
-              <span
-                className={`inline-flex items-center gap-1 text-xs font-medium ${
-                  item.direction === "up" ? "text-emerald-500" : "text-sky-500"
-                }`}
-              >
-                {item.direction === "up" ? <ArrowUpRightIcon className="h-3.5 w-3.5" /> : <ArrowDownRightIcon className="h-3.5 w-3.5" />}
-                {item.change}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 export function DashboardPlaceholder() {
   return (
     <section className="page-reveal flex w-full max-w-none flex-col gap-6">
       <header className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div className="space-y-3">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Dashboard</h1>
-            <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
-              A neutral overview page for revenue, activity, and delivery trends. Replace the metrics and tables with
-              data from your project when the template is wired to a real backend.
-            </p>
-          </div>
+        <div className="space-y-2">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Dashboard</h1>
+          <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
+            Overview of key metrics, commercial performance, and operational activity across your workspace.
+          </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -103,21 +81,39 @@ export function DashboardPlaceholder() {
         </div>
       </header>
 
-      <SummaryBand />
+      <Card className="overflow-hidden p-0">
+        <CardContent className="grid divide-y p-0 md:grid-cols-4 md:divide-y-0 md:divide-x">
+          {summary.map((item) => (
+            <div key={item.label} className="space-y-3 px-5 py-5 sm:px-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                {item.label}
+              </p>
+              <div className="flex items-end justify-between gap-3">
+                <p className="text-2xl font-semibold tracking-tight text-foreground">{item.value}</p>
+                <span
+                  className={`inline-flex items-center gap-1 text-xs font-medium ${
+                    item.direction === "up" ? "text-emerald-500" : "text-sky-500"
+                  }`}
+                >
+                  {item.direction === "up" ? <ArrowUpRightIcon className="h-3.5 w-3.5" /> : <ArrowDownRightIcon className="h-3.5 w-3.5" />}
+                  {item.change}
+                </span>
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.85fr)]">
-        <section className="min-w-0 rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
-          <div className="flex flex-col gap-2 border-b border-border/60 pb-5 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-lg font-semibold tracking-tight text-foreground">Commercial trend</h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Monthly performance across revenue and completed orders.
-              </p>
-            </div>
-            <Badge variant="outline">Last 6 months</Badge>
-          </div>
-
-          <div className="pt-6">
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle>Commercial trend</CardTitle>
+            <CardDescription>Monthly performance across revenue and completed orders.</CardDescription>
+            <CardAction>
+              <Badge variant="outline">Last 6 months</Badge>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
             <ChartContainer config={trendConfig} className="aspect-auto h-[290px] w-full max-w-full overflow-hidden">
               <AreaChart data={trendData} margin={{ left: 8, right: 8, top: 8 }}>
                 <CartesianGrid vertical={false} />
@@ -147,18 +143,15 @@ export function DashboardPlaceholder() {
                 />
               </AreaChart>
             </ChartContainer>
-          </div>
-        </section>
+          </CardContent>
+        </Card>
 
-        <section className="min-w-0 overflow-hidden rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
-          <div className="border-b border-border/60 pb-5">
-            <h2 className="text-lg font-semibold tracking-tight text-foreground">Acquisition mix</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Source contribution is shown here with a simple shadcn chart surface and a readable breakdown.
-            </p>
-          </div>
-
-          <div className="pt-6">
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle>Acquisition mix</CardTitle>
+            <CardDescription>Channel breakdown showing acquisition sources and their relative contribution.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
             <ChartContainer config={channelConfig} className="aspect-auto h-[220px] w-full max-w-full overflow-hidden">
               <BarChart data={channelData} margin={{ left: 4, right: 4, top: 4 }}>
                 <CartesianGrid vertical={false} />
@@ -175,28 +168,25 @@ export function DashboardPlaceholder() {
               </BarChart>
             </ChartContainer>
 
-            <div className="mt-5 space-y-3">
+            <div className="space-y-3">
               {channelData.map((item) => (
-                <div key={item.source} className="flex items-center justify-between border-b border-dashed border-border/60 pb-3 last:border-0 last:pb-0">
+                <div key={item.source} className="flex items-center justify-between border-b border-dashed border-border pb-3 last:border-0 last:pb-0">
                   <span className="text-sm font-medium text-foreground">{item.source}</span>
                   <span className="text-sm text-muted-foreground">{item.share}%</span>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
-        <section className="rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
-          <div className="border-b border-border/60 pb-5">
-            <h2 className="text-lg font-semibold tracking-tight text-foreground">Pipeline</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              A simple operational table for launches, migrations, or internal delivery milestones.
-            </p>
-          </div>
-
-          <div className="divide-y divide-border/60 pt-2">
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle>Pipeline</CardTitle>
+            <CardDescription>Active projects and delivery milestones with current status and target dates.</CardDescription>
+          </CardHeader>
+          <CardContent className="divide-y divide-border pt-2">
             {pipeline.map((item) => (
               <div key={item.name} className="grid gap-2 py-4 sm:grid-cols-[minmax(0,1.2fr)_140px_120px_80px] sm:items-center sm:gap-4">
                 <div>
@@ -210,26 +200,23 @@ export function DashboardPlaceholder() {
                 </div>
               </div>
             ))}
-          </div>
-        </section>
+          </CardContent>
+        </Card>
 
-        <section className="rounded-[28px] border border-border/60 bg-background/80 px-5 py-5 sm:px-6">
-          <div className="border-b border-border/60 pb-5">
-            <h2 className="text-lg font-semibold tracking-tight text-foreground">Recent changes</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Use this area for notes, deployments, or workflow updates.
-            </p>
-          </div>
-
-          <div className="space-y-4 pt-5">
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle>Recent changes</CardTitle>
+            <CardDescription>Latest updates, deployments, and workflow changes across teams.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4 pt-4">
             {activity.map((item) => (
-              <div key={item.title} className="space-y-1 border-b border-dashed border-border/60 pb-4 last:border-0 last:pb-0">
+              <div key={item.title} className="space-y-1 border-b border-dashed border-border pb-4 last:border-0 last:pb-0">
                 <p className="text-sm font-medium text-foreground">{item.title}</p>
                 <p className="text-sm leading-6 text-muted-foreground">{item.detail}</p>
               </div>
             ))}
-          </div>
-        </section>
+          </CardContent>
+        </Card>
       </div>
     </section>
   )

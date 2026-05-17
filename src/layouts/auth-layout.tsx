@@ -22,10 +22,10 @@ export function AuthLayout() {
 
         <div className="relative z-10 max-w-md">
           <h2 className="text-4xl font-semibold tracking-tight mb-6">
-            Start new internal tools and admin panels without rebuilding the shell.
+            Streamline your operations with a single source of truth.
           </h2>
           <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-            The layout, protected routes, login screen, and responsive navigation are already wired. Replace the placeholders and keep shipping.
+            Get real-time visibility into revenue, products, and team workflows. Built for teams that move fast.
           </p>
         </div>
       </div>

@@ -8,7 +8,7 @@ export function LoginCard() {
           Welcome back
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Use the simulated Google sign-in to enter the dashboard template and test protected routes, redirects, and sign-out behavior.
+          Sign in to access your dashboard and manage your workspace.
         </p>
       </div>
 
@@ -17,7 +17,7 @@ export function LoginCard() {
       </div>
 
       <p className="text-center text-xs text-muted-foreground mt-8">
-        This template ships with a simulated Google login so the auth flow works before a real backend is connected.
+        By signing in, you agree to the Terms of Service and Privacy Policy.
       </p>
     </div>
   )

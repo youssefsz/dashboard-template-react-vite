@@ -1,11 +1,11 @@
 import type { SessionUser } from "../types/auth.types"
 
-const SESSION_STORAGE_KEY = "dashboard-template.session"
+const SESSION_STORAGE_KEY = "app.session"
 
 const mockUser: SessionUser = {
-  id: "template-user",
-  email: "template@dashboard.dev",
-  name: "Template Owner",
+  id: "user_01",
+  email: "alex.morgan@northwind.dev",
+  name: "Alex Morgan",
   emailVerified: true,
   createdAt: "2026-01-01T00:00:00.000Z",
   updatedAt: "2026-01-01T00:00:00.000Z",
