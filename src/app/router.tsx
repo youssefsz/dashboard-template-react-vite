@@ -1,52 +1,93 @@
-import { createBrowserRouter } from "react-router-dom"
-import { AppLayout } from "@/layouts/app-layout"
+import { createBrowserRouter, Navigate } from "react-router-dom"
 import { AuthLayout } from "@/layouts/auth-layout"
-
-import DashboardPage from "@/pages/dashboard/DashboardPage"
+import { AppLayoutSkeleton } from "@/layouts/app-layout-skeleton"
 import LoginPage from "@/pages/auth/login-page"
-import ProductsPage from "@/pages/products/ProductsPage"
-import SettingsPage from "@/pages/settings/SettingsPage"
 import ErrorPage from "@/pages/error-page"
-import NotFoundPage from "@/pages/not-found-page"
 
 export const router = createBrowserRouter([
   {
     path: "/login",
     element: <AuthLayout />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <LoginPage />,
-      },
-    ],
+    children: [{ index: true, element: <LoginPage /> }],
   },
   {
     path: "/",
-    element: <AppLayout />,
+    HydrateFallback: AppLayoutSkeleton,
+    lazy: async () => ({
+      Component: (await import("@/layouts/app-layout")).AppLayout,
+    }),
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <DashboardPage />,
+        lazy: async () => ({
+          Component: (await import("@/pages/dashboard/DashboardPage")).default,
+        }),
       },
       {
-        path: "products",
-        element: <ProductsPage />,
+        path: "users",
+        lazy: async () => ({
+          Component: (await import("@/pages/users/UsersPage")).default,
+        }),
       },
       {
         path: "settings",
-        element: <SettingsPage />,
+        lazy: async () => ({
+          Component: (await import("@/pages/settings/SettingsPage")).default,
+        }),
+      },
+      { path: "products", element: <Navigate to="/users" replace /> },
+      {
+        path: "analytics/:kind",
+        lazy: async () => ({
+          Component: (await import("@/pages/analytics/AnalyticsPage")).default,
+        }),
+      },
+      {
+        path: "operations",
+        lazy: async () => ({
+          Component: (await import("@/pages/operations/OperationsPage"))
+            .default,
+        }),
+      },
+      {
+        path: "administrators",
+        lazy: async () => ({
+          Component: (await import("@/pages/governance/AdministratorsPage"))
+            .default,
+        }),
+      },
+      {
+        path: "roles",
+        lazy: async () => ({
+          Component: (await import("@/pages/governance/RolesPage")).default,
+        }),
+      },
+      {
+        path: "audit",
+        lazy: async () => ({
+          Component: (await import("@/pages/governance/AuditPage")).default,
+        }),
+      },
+      {
+        path: "deletions",
+        lazy: async () => ({
+          Component: (await import("@/pages/governance/DeletionsPage")).default,
+        }),
+      },
+      {
+        path: "account/security",
+        lazy: async () => ({
+          Component: (await import("@/pages/account/SecurityPage")).default,
+        }),
       },
       {
         path: "*",
-        element: <NotFoundPage />,
+        lazy: async () => ({
+          Component: (await import("@/pages/not-found-page")).default,
+        }),
       },
     ],
-  },
-  {
-    path: "*",
-    element: <NotFoundPage />,
-    errorElement: <ErrorPage />,
   },
 ])

@@ -1,5 +1,4 @@
-import { DashboardPlaceholder } from "@/features/dashboard/components/dashboard-placeholder"
-
+import { DashboardOverview } from "@/features/dashboard/components/DashboardOverview"
 export default function DashboardPage() {
-  return <DashboardPlaceholder />
+  return <DashboardOverview />
 }

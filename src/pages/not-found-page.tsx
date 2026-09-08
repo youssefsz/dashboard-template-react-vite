@@ -2,34 +2,33 @@ import { Link } from "react-router-dom"
 
 export default function NotFoundPage() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] select-none overflow-hidden">
+    <div className="relative flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center overflow-hidden select-none">
       {/* Giant watermark */}
       <span
         aria-hidden="true"
-        className="absolute text-[8rem] sm:text-[12rem] md:text-[16rem] lg:text-[20rem] font-black leading-none tracking-tighter text-foreground/[0.04] pointer-events-none"
+        className="pointer-events-none absolute text-[8rem] leading-none font-black tracking-tighter text-foreground/[0.04] sm:text-[12rem] md:text-[16rem] lg:text-[20rem]"
       >
         404
       </span>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center gap-4 max-w-sm">
-
+      <div className="relative z-10 flex max-w-sm flex-col items-center gap-4 text-center">
         <h1 className="text-2xl font-semibold tracking-tight text-foreground">
           Page not found
         </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-sm leading-relaxed text-muted-foreground">
           The page you're looking for doesn't exist or may have been moved.
         </p>
-        <div className="flex items-center gap-3 mt-2">
+        <div className="mt-2 flex items-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center h-9 px-4 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+            className="inline-flex h-9 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go to Dashboard
           </Link>
           <button
             onClick={() => window.history.back()}
-            className="inline-flex items-center h-9 px-4 rounded-md border border-border bg-transparent text-foreground text-sm font-medium hover:bg-muted/50 transition-colors"
+            className="inline-flex h-9 items-center rounded-md border border-border bg-transparent px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted/50"
           >
             Go back
           </button>

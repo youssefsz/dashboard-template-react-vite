@@ -31,8 +31,8 @@ export function SignOutDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent showCloseButton={!isPending}>
         <DialogHeader>
-          <div className="flex items-center gap-3 mb-1">
-            <ArrowRightOnRectangleIcon className="h-5 w-5 text-destructive shrink-0" />
+          <div className="mb-1 flex items-center gap-3">
+            <ArrowRightOnRectangleIcon className="h-5 w-5 shrink-0 text-destructive" />
             <DialogTitle>
               {isAll ? "Sign out of all sessions?" : "Sign out?"}
             </DialogTitle>
@@ -61,7 +61,7 @@ export function SignOutDialog({
           >
             {isPending ? (
               <span className="flex items-center gap-2">
-                <span className="h-3.5 w-3.5 rounded-full border-2 border-current border-t-transparent animate-spin" />
+                <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-current border-t-transparent" />
                 Signing out…
               </span>
             ) : isAll ? (

@@ -3,38 +3,47 @@ import { AppLogo } from "@/components/common/app-logo"
 
 export function AuthLayout() {
   return (
-    <div className="flex min-h-screen w-full bg-background flex-col lg:flex-row">
-      <div className="lg:hidden flex items-center justify-center p-6 border-b border-border bg-background">
-        <Link to="/" className="transition-transform hover:scale-105 active:scale-95">
-          <AppLogo className="h-9 text-foreground" />
-        </Link>
-      </div>
-
-      <div className="hidden lg:flex w-1/2 flex-col justify-center bg-zinc-950 p-12 text-zinc-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent opacity-60 pointer-events-none" />
-        <div className="absolute -top-[500px] -right-[500px] w-[1000px] h-[1000px] rounded-full bg-primary/10 blur-[100px] pointer-events-none" />
-
-        <div className="absolute top-12 left-12 z-10 flex items-center gap-3">
-          <Link to="/" className="transition-transform hover:scale-105 active:scale-95">
-            <AppLogo className="h-10 text-white" />
+    <div className="grid min-h-svh bg-background text-foreground lg:grid-cols-2">
+      <div className="flex min-h-svh flex-col">
+        <header className="px-6 py-5 sm:px-8">
+          <Link
+            to="/"
+            aria-label="Dashboard home"
+            className="inline-flex rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <AppLogo className="h-8" />
           </Link>
+        </header>
+        <main className="flex flex-1 items-center justify-center px-6 py-6 sm:px-12">
+          <div className="w-full max-w-xs">
+            <Outlet />
+          </div>
+        </main>
+        <footer className="px-6 py-4 text-center text-xs text-muted-foreground">
+          Your workspace. Everything in one place.
+        </footer>
+      </div>
+      <aside
+        className="relative hidden items-center justify-center overflow-hidden bg-muted lg:flex"
+        aria-label="Your workspace at a glance"
+      >
+        <div className="auth-orbit" aria-hidden="true">
+          <div className="auth-orbit-inner" />
+          <div className="auth-orbit-core">
+            <AppLogo compact className="h-12" />
+          </div>
         </div>
-
-        <div className="relative z-10 max-w-md">
-          <h2 className="text-4xl font-semibold tracking-tight mb-6">
-            Streamline your operations with a single source of truth.
+        <div className="absolute inset-x-12 bottom-12 flex flex-col gap-3 text-center">
+          <h2 className="text-2xl font-medium tracking-tight">
+            A clear view. A better day.
           </h2>
-          <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-            Get real-time visibility into revenue, products, and team workflows. Built for teams that move fast.
+          <p className="mx-auto max-w-sm text-sm leading-6 text-muted-foreground">
+            Your people, performance, and priorities.
+            <br />
+            Together in one workspace.
           </p>
         </div>
-      </div>
-
-      <main className="flex-1 flex flex-col items-center justify-center p-6 sm:p-12 lg:p-24 relative">
-        <div className="w-full max-w-sm space-y-8 mt-4 lg:mt-0">
-          <Outlet />
-        </div>
-      </main>
+      </aside>
     </div>
   )
 }
