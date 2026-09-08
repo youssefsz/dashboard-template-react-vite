@@ -1,5 +1,4 @@
-import { SettingsPlaceholder } from "@/features/settings/components/settings-placeholder"
-
+import { WorkspaceSettings } from "@/features/settings/components/WorkspaceSettings"
 export default function SettingsPage() {
-  return <SettingsPlaceholder />
+  return <WorkspaceSettings />
 }

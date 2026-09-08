@@ -6,7 +6,10 @@ import "./styles/globals.css"
 import { Providers } from "@/app/providers"
 import { router } from "@/app/router"
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root")
+if (!rootElement) throw new Error("Application root is missing")
+
+createRoot(rootElement).render(
   <StrictMode>
     <Providers>
       <RouterProvider router={router} />

@@ -14,13 +14,52 @@ export function AppLogo({ className, compact = false }: AppLogoProps) {
       className={cn("h-10 w-auto", className)}
     >
       <g transform="translate(2 2)">
-        <rect x="1.5" y="1.5" width="44" height="28" rx="6.5" fill="none" stroke="currentColor" strokeWidth="3" />
-        <path d="M18 35h11" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M11 24.5h9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M11 19h13" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-        <path d="M28 19v6.5" stroke="#38BDF8" strokeWidth="6" strokeLinecap="round" />
-        <path d="M35 12v13.5" stroke="#2563EB" strokeWidth="6" strokeLinecap="round" />
-        <path d="M42 16v9.5" stroke="#2DD4BF" strokeWidth="6" strokeLinecap="round" />
+        <rect
+          x="1.5"
+          y="1.5"
+          width="44"
+          height="28"
+          rx="6.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+        />
+        <path
+          d="M18 35h11"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M11 24.5h9"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M11 19h13"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M28 19v6.5"
+          stroke="#38BDF8"
+          strokeWidth="6"
+          strokeLinecap="round"
+        />
+        <path
+          d="M35 12v13.5"
+          stroke="#2563EB"
+          strokeWidth="6"
+          strokeLinecap="round"
+        />
+        <path
+          d="M42 16v9.5"
+          stroke="#2DD4BF"
+          strokeWidth="6"
+          strokeLinecap="round"
+        />
         <path
           d="M12 9a7 7 0 1 1 4.95 6.7"
           fill="none"
@@ -35,10 +74,23 @@ export function AppLogo({ className, compact = false }: AppLogoProps) {
 
       {!compact ? (
         <g transform="translate(60 0)" fill="currentColor">
-          <text x="0" y="17" fontSize="14" fontWeight="700" letterSpacing="0.18em">
+          <text
+            x="0"
+            y="17"
+            fontSize="14"
+            fontWeight="700"
+            letterSpacing="0.18em"
+          >
             DASHBOARD
           </text>
-          <text x="0" y="31" fontSize="11" fontWeight="600" letterSpacing="0.28em" opacity="0.72">
+          <text
+            x="0"
+            y="31"
+            fontSize="11"
+            fontWeight="600"
+            letterSpacing="0.28em"
+            opacity="0.72"
+          >
             TEMPLATE
           </text>
         </g>

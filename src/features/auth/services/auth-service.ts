@@ -1,4 +1,14 @@
+import { z } from "zod"
 import type { SessionUser } from "../types/auth.types"
+
+const sessionUserSchema = z.object({
+  id: z.string(),
+  email: z.email(),
+  name: z.string().min(1),
+  emailVerified: z.boolean(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+})
 
 const SESSION_STORAGE_KEY = "app.session"
 
@@ -22,7 +32,7 @@ function readStoredSession() {
   }
 
   try {
-    return JSON.parse(raw) as SessionUser
+    return sessionUserSchema.parse(JSON.parse(raw))
   } catch {
     window.localStorage.removeItem(SESSION_STORAGE_KEY)
     return null
@@ -47,6 +57,24 @@ function wait(ms: number) {
 }
 
 export const authService = {
+  // Demo credentials only. Replace with server-side authentication before
+  // deployment. Never store real passwords in browser storage.
+  async loginWithPassword({
+    username,
+    password,
+  }: {
+    username: string
+    password: string
+  }) {
+    await wait(700)
+    if (!username.trim() || !password) {
+      throw new Error("Enter your username and password to continue.")
+    }
+    const user = { ...mockUser, updatedAt: new Date().toISOString() }
+    writeStoredSession(user)
+    return { user }
+  },
+
   async getSession() {
     const user = readStoredSession()
 
@@ -67,9 +95,6 @@ export const authService = {
     writeStoredSession(user)
 
     return { user }
-
-    // Real Google implementation kept here for later restoration:
-    // return apiClient.post<{ user: SessionUser }>("/v1/auth/google", { idToken })
   },
 
   async logout() {
@@ -77,8 +102,5 @@ export const authService = {
     writeStoredSession(null)
 
     return { success: true }
-
-    // Real backend implementation kept here for later restoration:
-    // return apiClient.post<{ success: boolean }>("/v1/auth/logout")
   },
 }

@@ -1,7 +1,8 @@
 import type { ReactNode } from "react"
 import { QueryClientProvider } from "@tanstack/react-query"
+import { MotionConfig } from "motion/react"
 import { ThemeProvider } from "@/components/theme-provider"
-import { SessionProvider } from "@/features/auth/hooks/use-session"
+import { SessionProvider } from "@/features/auth/components/SessionProvider"
 import { queryClient } from "@/lib/react-query"
 
 interface ProvidersProps {
@@ -11,11 +12,11 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
-      </QueryClientProvider>
+      <MotionConfig reducedMotion="user">
+        <QueryClientProvider client={queryClient}>
+          <SessionProvider>{children}</SessionProvider>
+        </QueryClientProvider>
+      </MotionConfig>
     </ThemeProvider>
   )
 }
